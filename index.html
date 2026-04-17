@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mejdi Sidaoui | Junior Data Scientist</title>
+    <!-- FontAwesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- VARIABLES ET THÈME --- */
+        :root {
+            --primary: #0f172a;    /* Bleu Nuit */
+            --accent: #2563eb;     /* Bleu Professionnel */
+            --bg-light: #f8fafc;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; }
+        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; scroll-behavior: smooth; }
+
+        /* --- LOGIQUE DE LANGUE (CSS ONLY) --- */
+        #lang-toggle { display: none; }
+        
+        /* Par défaut : Français visible, Anglais caché */
+        .en { display: none; }
+        #lang-toggle:checked ~ * .fr { display: none; }
+        #lang-toggle:checked ~ * .en { display: block; }
+        /* Pour les éléments en ligne (links) */
+        #lang-toggle:checked ~ nav .nav-links .en { display: inline-block; }
+        #lang-toggle:not(:checked) ~ nav .nav-links .fr { display: inline-block; }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed; width: 100%; background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 5%; display: flex; justify-content: space-between;
+            align-items: center; box-shadow: 0 1px 10px rgba(0,0,0,0.05); z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-links { display: flex; gap: 25px; align-items: center; }
+        .nav-links a { 
+            text-decoration: none; color: var(--text-dark); 
+            font-weight: 600; font-size: 0.9rem; transition: 0.3s;
+            white-space: nowrap;
+        }
+        .nav-links a:hover { color: var(--accent); }
+
+        .lang-btn {
+            background: var(--primary); color: white; padding: 8px 16px;
+            border-radius: 20px; cursor: pointer; font-size: 0.8rem; font-weight: bold;
+            transition: 0.3s;
+        }
+        .lang-btn:hover { background: var(--accent); }
+
+        /* --- SECTIONS --- */
+        section { padding: 100px 10% 60px; }
+        .container { max-width: 1100px; margin: 0 auto; }
+        h2 { font-size: 2rem; margin-bottom: 2.5rem; border-left: 5px solid var(--accent); padding-left: 15px; }
+
+        /* --- HERO --- */
+        #home { 
+            height: 100vh; display: flex; align-items: center; 
+            background: radial-gradient(circle at top right, #1e293b, #0f172a); color: white;
+        }
+        .hero-flex { display: flex; justify-content: space-between; align-items: center; width: 100%; gap: 40px; }
+        .hero-text h1 { font-size: 4rem; margin-bottom: 10px; letter-spacing: -1px; }
+        .hero-text .subtitle { font-size: 1.5rem; color: var(--accent); font-weight: 300; margin-bottom: 25px; }
+        
+        /* Placeholder pour la photo */
+        .profile-circle {
+            width: 320px; height: 320px; border-radius: 50%;
+            border: 8px solid rgba(255,255,255,0.1); overflow: hidden;
+            background: #334155; flex-shrink: 0;
+        }
+        .profile-circle img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* --- SKILLS --- */
+        .skills-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .skill-group { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+        .skill-item { margin-bottom: 15px; }
+        .skill-label { display: flex; justify-content: space-between; margin-bottom: 5px; font-weight: 600; font-size: 0.9rem; }
+        .bar-bg { height: 8px; background: #e2e8f0; border-radius: 10px; }
+        .bar-fill { height: 100%; background: var(--accent); border-radius: 10px; }
+
+        /* --- TIMELINE (Experience & Education) --- */
+        .timeline { border-left: 2px solid #e2e8f0; padding-left: 30px; margin-left: 10px; }
+        .timeline-card { position: relative; margin-bottom: 40px; }
+        .timeline-card::before {
+            content: ""; position: absolute; left: -39px; top: 5px;
+            width: 16px; height: 16px; border-radius: 50%; background: var(--accent); border: 4px solid var(--bg-light);
+        }
+        .time-date { font-weight: bold; color: var(--accent); font-size: 0.85rem; }
+        .time-title { font-weight: 700; font-size: 1.1rem; display: block; margin: 4px 0; }
+        .time-desc { font-size: 0.95rem; color: var(--text-muted); }
+
+        /* --- PROJECTS --- */
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        .p-card { 
+            background: var(--white); padding: 35px; border-radius: 15px; 
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); border-top: 4px solid var(--accent);
+        }
+        .p-card h3 { margin-bottom: 15px; color: var(--primary); }
+        .tags { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 8px; }
+        .tag { background: #eff6ff; color: #1e40af; padding: 4px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; }
+
+        /* --- CONTACT --- */
+        #contact { background: var(--primary); color: white; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; align-items: start; }
+        .contact-info a { color: white; text-decoration: none; display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+        .contact-info i { color: var(--accent); font-size: 1.2rem; }
+        
+        form { background: rgba(255,255,255,0.05); padding: 40px; border-radius: 20px; display: flex; flex-direction: column; gap: 15px; }
+        input, textarea { 
+            padding: 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); 
+            background: rgba(255,255,255,0.9); color: var(--primary); font-size: 1rem;
+        }
+        form button { 
+            background: var(--accent); color: white; padding: 15px; border: none; 
+            border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s;
+        }
+        form button:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.4); }
+
+        /* --- MOBILE --- */
+        @media (max-width: 850px) {
+            .hero-flex { flex-direction: column-reverse; text-align: center; }
+            .hero-text h1 { font-size: 2.8rem; }
+            .profile-circle { width: 220px; height: 220px; }
+            .contact-grid { grid-template-columns: 1fr; }
+            nav { padding: 1rem; }
+            .nav-links { gap: 12px; font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <input type="checkbox" id="lang-toggle">
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about" class="fr">À propos</a><a href="#about" class="en">About</a>
+            <a href="#experience" class="fr">Parcours</a><a href="#experience" class="en">Career</a>
+            <a href="#projects">Projets</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <label for="lang-toggle" class="lang-btn">
+            <span class="fr">EN</span><span class="en">FR</span>
+        </label>
+    </nav>
+
+    <!-- ACCUEIL -->
+    <section id="home">
+        <div class="container hero-flex">
+            <div class="hero-text">
+                <p class="subtitle">Junior Data Scientist</p>
+                <h1>Mejdi Sidaoui</h1>
+                <div class="fr">Étudiant ingénieur passionné par le Machine Learning et l'analyse prédictive.</div>
+                <div class="en">Engineering student passionate about Machine Learning and predictive analytics.</div>
+            </div>
+            <div class="profile-circle">
+                <!-- METTEZ VOTRE PHOTO ICI -->
+                <img src="243JMT5460.png" alt="Mejdi Sidaoui">
+            </div>
+        </div>
+    </section>
+
+    <!-- À PROPOS & SKILLS -->
+    <section id="about">
+        <div class="container">
+            <h2 class="fr">Expertise & Compétences</h2><h2 class="en">Expertise & Skills</h2>
+            <div class="skills-container">
+                <!-- Colonne Gauche -->
+                <div class="skill-group">
+                    <div class="skill-item">
+                        <div class="skill-label"><span>Python / R / Java</span><span>90%</span></div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 90%;"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label"><span>Data Viz (Power BI, Seaborn)</span><span>95%</span></div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 95%;"></div></div>
+                    </div>
+                </div>
+                <!-- Colonne Droite -->
+                <div class="skill-group">
+                    <div class="skill-item">
+                        <div class="skill-label"><span>Machine Learning (TF, Scikit)</span><span>85%</span></div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 85%;"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label"><span>SQL / NoSQL / Neo4j</span><span>80%</span></div>
+                        <div class="bar-bg"><div class="bar-fill" style="width: 80%;"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE & EDUCATION -->
+    <section id="experience" style="background: #f1f5f9;">
+        <div class="container">
+            <h2 class="fr">Expériences & Études</h2><h2 class="en">Experience & Education</h2>
+            
+            <div class="timeline">
+                <div class="timeline-card">
+                    <span class="time-date">06/2025 – 07/2025</span>
+                    <span class="time-title">Sagemcom — Business Intelligence Intern</span>
+                    <p class="time-desc fr">Analyse de données CSV, nettoyage via Power Query et conception de dashboards Power BI.</p>
+                    <p class="time-desc en">CSV data analysis, Power Query cleaning, and Power BI dashboard design.</p>
+                </div>
+                
+                <div class="timeline-card">
+                    <span class="time-date">2024 – Present</span>
+                    <span class="time-title">ESPRIT, Tunis — Engineering Degree</span>
+                    <p class="time-desc fr">Spécialisation en Informatique et Data Science.</p>
+                    <p class="time-desc en">Specialization in Computer Science and Data Science.</p>
+                </div>
+
+                <div class="timeline-card">
+                    <span class="time-date">07/2023 – 08/2023</span>
+                    <span class="time-title">Arab Tunisian Bank — Summer Intern</span>
+                    <p class="time-desc fr">Traitement sécurisé des opérations bancaires et support client professionnel.</p>
+                    <p class="time-desc en">Secure processing of banking operations and professional customer support.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJETS -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="fr">Projets Phares</h2><h2 class="en">Main Projects</h2>
+            <div class="project-grid">
+                <div class="p-card">
+                    <h3>QoS Buddy (AI Agent)</h3>
+                    <p class="fr">Agent IA pour l'optimisation des réseaux télécom. Analyse des KPIs et diagnostic automatisé des pannes.</p>
+                    <p class="en">AI Agent for telecom network optimization. KPI analysis and automated fault diagnosis.</p>
+                    <div class="tags"><span class="tag">Streamlit</span><span class="tag">AI</span><span class="tag">Telecom</span></div>
+                </div>
+                <div class="p-card">
+                    <h3>Delivery Time Prediction</h3>
+                    <p class="fr">Modèle de régression pour estimer les délais de livraison logistique avec PCA et Feature Engineering.</p>
+                    <p class="en">Regression model to estimate logistics delivery times using PCA and Feature Engineering.</p>
+                    <div class="tags"><span class="tag">XGBoost</span><span class="tag">Regression</span><span class="tag">PCA</span></div>
+                </div>
+                <div class="p-card">
+                    <h3>Breast Cancer Detection</h3>
+                    <p class="fr">Classification médicale haute précision basée sur des algorithmes de Machine Learning.</p>
+                    <p class="en">High-precision medical classification based on Machine Learning algorithms.</p>
+                    <div class="tags"><span class="tag">Healthcare</span><span class="tag">Scikit-Learn</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="container contact-grid">
+            <div class="contact-info">
+                <h2 style="color: white; border:none; padding:0;" class="fr">Contactez-moi</h2>
+                <h2 style="color: white; border:none; padding:0;" class="en">Get in Touch</h2>
+                <p class="fr" style="margin-bottom:30px; opacity:0.8;">Disponible pour un stage ou une opportunité junior.</p>
+                <p class="en" style="margin-bottom:30px; opacity:0.8;">Available for internships or junior opportunities.</p>
+                
+                <a href="mailto:Mejdisidaoui50@gmail.com"><i class="fas fa-envelope"></i> Mejdisidaoui50@gmail.com</a>
+                <a href="tel:+21655239555"><i class="fas fa-phone"></i> (+216) 55 239 555</a>
+                <a href="https://linkedin.com/in/mejdi-sidaoui-77111b326" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn Profile</a>
+            </div>
+
+            <!-- FORMULAIRE FORMSPREE -->
+            <form action="https://formspree.io/f/xdayglkp" method="POST">
+                <!-- Redirection après envoi -->
+                <input type="hidden" name="_next" value="VOTRE_URL_GITHUB_ICI/thanks.html">
+                
+                <input type="text" name="name" placeholder="Nom / Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <textarea name="message" rows="5" placeholder="Votre message / Message" required></textarea>
+                
+                <button type="submit" class="fr">Envoyer le message</button>
+                <button type="submit" class="en">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer style="background: #0f172a; color: #475569; text-align: center; padding: 40px; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.05);">
+        Mejdi Sidaoui © 2024 — Junior Data Scientist
+    </footer>
+
+</body>
+</html>
