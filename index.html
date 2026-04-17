@@ -137,13 +137,14 @@
 
     <input type="checkbox" id="lang-toggle">
 
-    <!-- NAVIGATION -->
+<!-- NAVIGATION -->
     <nav>
         <div class="nav-links">
-            <a href="#home">Home</a>
+            <a href="#home" class="fr">Accueil</a><a href="#home" class="en" >Home</a>
             <a href="#about" class="fr">À propos</a><a href="#about" class="en">About</a>
-            <a href="#experience" class="fr">Parcours</a><a href="#experience" class="en">Career</a>
-            <a href="#projects">Projets</a>
+            <a href="#experience" class="fr">Expérience</a><a href="#experience" class="en">Experience</a>
+            <a href="#education" class="fr">Études</a><a href="#education" class="en">Education</a>
+            <a href="#projects" class="fr">Projets</a><a href="#projects" class="en">Projects</a>
             <a href="#contact">Contact</a>
         </div>
         <label for="lang-toggle" class="lang-btn">
@@ -155,10 +156,9 @@
     <section id="home">
         <div class="container hero-flex">
             <div class="hero-text">
-                <p class="subtitle">Junior Data Scientist</p>
                 <h1>Mejdi Sidaoui</h1>
-                <div class="fr">Étudiant ingénieur passionné par le Machine Learning et l'analyse prédictive.</div>
-                <div class="en">Engineering student passionate about Machine Learning and predictive analytics.</div>
+                <p class="subtitle">Junior Data Scientist</p>
+
             </div>
             <div class="profile-circle">
                 <!-- METTEZ VOTRE PHOTO ICI -->
@@ -198,36 +198,65 @@
         </div>
     </section>
 
-    <!-- EXPERIENCE & EDUCATION -->
+   <!-- SECTION EXPÉRIENCE -->
     <section id="experience" style="background: #f1f5f9;">
         <div class="container">
-            <h2 class="fr">Expériences & Études</h2><h2 class="en">Experience & Education</h2>
+            <h2 class="fr">Expériences Professionnelles</h2>
+            <h2 class="en">Professional Experience</h2>
             
             <div class="timeline">
+                <!-- Sagemcom -->
                 <div class="timeline-card">
                     <span class="time-date">06/2025 – 07/2025</span>
                     <span class="time-title">Sagemcom — Business Intelligence Intern</span>
-                    <p class="time-desc fr">Analyse de données CSV, nettoyage via Power Query et conception de dashboards Power BI.</p>
-                    <p class="time-desc en">CSV data analysis, Power Query cleaning, and Power BI dashboard design.</p>
+                    <p class="time-desc fr">Analyse et nettoyage de données CSV via Power Query. Développement de tableaux de bord interactifs sur Power BI Desktop pour le support au reporting.</p>
+                    <p class="time-desc en">Data analysis and cleaning via Power Query. Development of interactive dashboards on Power BI Desktop to support reporting needs.</p>
                 </div>
                 
-                <div class="timeline-card">
-                    <span class="time-date">2024 – Present</span>
-                    <span class="time-title">ESPRIT, Tunis — Engineering Degree</span>
-                    <p class="time-desc fr">Spécialisation en Informatique et Data Science.</p>
-                    <p class="time-desc en">Specialization in Computer Science and Data Science.</p>
-                </div>
-
+                <!-- ATB -->
                 <div class="timeline-card">
                     <span class="time-date">07/2023 – 08/2023</span>
                     <span class="time-title">Arab Tunisian Bank — Summer Intern</span>
-                    <p class="time-desc fr">Traitement sécurisé des opérations bancaires et support client professionnel.</p>
-                    <p class="time-desc en">Secure processing of banking operations and professional customer support.</p>
+                    <p class="time-desc fr">Assistance dans le traitement sécurisé des opérations bancaires courantes (crédits, cartes, gestion de comptes) et service client.</p>
+                    <p class="time-desc en">Assisted in secure processing of routine banking operations (credits, cards, account management) and provided customer service.</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- SECTION ÉDUCATION -->
+    <section id="education" style="background: var(--white);">
+        <div class="container">
+            <h2 class="fr">Parcours Académique</h2>
+            <h2 class="en">Education</h2>
+            
+            <div class="timeline">
+                <!-- ESPRIT -->
+                <div class="timeline-card">
+                    <span class="time-date">08/2024 – Présent</span>
+                    <span class="time-title">École Supérieure Privée d'Ingénierie et de Technologie (ESPRIT)</span>
+                    <p class="time-desc fr">Diplôme d'ingénieur en Informatique - Spécialisation Data Science.</p>
+                    <p class="time-desc en">Engineering degree in Computer Science - Data Science specialization.</p>
+                </div>
+
+                <!-- Prépa -->
+                <div class="timeline-card">
+                    <span class="time-date">08/2022 – 08/2024</span>
+                    <span class="time-title">Institut Préparatoire aux Études d'Ingénieurs de Tunis</span>
+                    <p class="time-desc fr">Cycle préparatoire (Mathématiques, Physique, Chimie et Systèmes Techniques Automatisés).</p>
+                    <p class="time-desc en">Preparatory Institute for Engineering Studies (Math, Physics, Chemistry, and Automated Technical Systems).</p>
+                </div>
+
+                <!-- Lycée -->
+                <div class="timeline-card">
+                    <span class="time-date">2022</span>
+                    <span class="time-title">Lycée Sadiki, Tunis</span>
+                    <p class="time-desc fr">Baccalauréat Scientifique (Diplôme de fin d'études secondaires).</p>
+                    <p class="time-desc en">Scientific Baccalaureate (Secondary School Diploma).</p>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- PROJETS -->
     <section id="projects">
         <div class="container">
