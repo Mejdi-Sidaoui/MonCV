@@ -23,11 +23,9 @@
         /* --- LOGIQUE DE LANGUE (CSS ONLY) --- */
         #lang-toggle { display: none; }
         
-        /* Par défaut : Français visible, Anglais caché */
         .en { display: none; }
         #lang-toggle:checked ~ * .fr { display: none; }
         #lang-toggle:checked ~ * .en { display: block; }
-        /* Pour les éléments en ligne (links) */
         #lang-toggle:checked ~ nav .nav-links .en { display: inline-block; }
         #lang-toggle:not(:checked) ~ nav .nav-links .fr { display: inline-block; }
 
@@ -38,98 +36,70 @@
             align-items: center; box-shadow: 0 1px 10px rgba(0,0,0,0.05); z-index: 1000;
             backdrop-filter: blur(10px);
         }
-
         .nav-links { display: flex; gap: 25px; align-items: center; }
-        .nav-links a { 
-            text-decoration: none; color: var(--text-dark); 
-            font-weight: 600; font-size: 0.9rem; transition: 0.3s;
-            white-space: nowrap;
-        }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 0.9rem; transition: 0.3s; white-space: nowrap; }
         .nav-links a:hover { color: var(--accent); }
-
-        .lang-btn {
-            background: var(--primary); color: white; padding: 8px 16px;
-            border-radius: 20px; cursor: pointer; font-size: 0.8rem; font-weight: bold;
-            transition: 0.3s;
-        }
-        .lang-btn:hover { background: var(--accent); }
+        .lang-btn { background: var(--primary); color: white; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 0.8rem; font-weight: bold; transition: 0.3s; }
 
         /* --- SECTIONS --- */
-        section { padding: 100px 10% 60px; }
+        section { padding: 80px 10% 40px; }
         .container { max-width: 1100px; margin: 0 auto; }
-        h2 { font-size: 2rem; margin-bottom: 2.5rem; border-left: 5px solid var(--accent); padding-left: 15px; }
+        h2 { font-size: 2rem; margin-bottom: 2rem; border-left: 5px solid var(--accent); padding-left: 15px; text-transform: uppercase; letter-spacing: 1px; }
 
         /* --- HERO --- */
-        #home { 
-            height: 100vh; display: flex; align-items: center; 
-            background: radial-gradient(circle at top right, #1e293b, #0f172a); color: white;
-        }
+        #home { height: 80vh; display: flex; align-items: center; background: radial-gradient(circle at top right, #1e293b, #0f172a); color: white; }
         .hero-flex { display: flex; justify-content: space-between; align-items: center; width: 100%; gap: 40px; }
-        .hero-text h1 { font-size: 4rem; margin-bottom: 10px; letter-spacing: -1px; }
-        .hero-text .subtitle { font-size: 1.5rem; color: var(--accent); font-weight: 300; margin-bottom: 25px; }
-        
-        /* Placeholder pour la photo */
-        .profile-circle {
-            width: 320px; height: 320px; border-radius: 50%;
-            border: 8px solid rgba(255,255,255,0.1); overflow: hidden;
-            background: #334155; flex-shrink: 0;
-        }
+        .hero-text h1 { font-size: 4rem; margin-bottom: 10px; }
+        .hero-text .subtitle { font-size: 1.5rem; color: var(--accent); font-weight: 300; }
+        .profile-circle { width: 300px; height: 300px; border-radius: 50%; border: 8px solid rgba(255,255,255,0.1); overflow: hidden; background: #334155; }
         .profile-circle img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* --- PROFIL (NEW) --- */
+        .profile-text { font-size: 1.1rem; color: var(--text-dark); max-width: 900px; line-height: 1.8; }
 
         /* --- SKILLS --- */
         .skills-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .skill-group { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
         .skill-item { margin-bottom: 15px; }
-        .skill-label { display: flex; justify-content: space-between; margin-bottom: 5px; font-weight: 600; font-size: 0.9rem; }
+        .skill-label { display: flex; justify-content: space-between; margin-bottom: 5px; font-weight: 600; }
         .bar-bg { height: 8px; background: #e2e8f0; border-radius: 10px; }
         .bar-fill { height: 100%; background: var(--accent); border-radius: 10px; }
 
-        /* --- TIMELINE (Experience & Education) --- */
+        /* --- TIMELINE --- */
         .timeline { border-left: 2px solid #e2e8f0; padding-left: 30px; margin-left: 10px; }
         .timeline-card { position: relative; margin-bottom: 40px; }
-        .timeline-card::before {
-            content: ""; position: absolute; left: -39px; top: 5px;
-            width: 16px; height: 16px; border-radius: 50%; background: var(--accent); border: 4px solid var(--bg-light);
-        }
-        .time-date { font-weight: bold; color: var(--accent); font-size: 0.85rem; }
-        .time-title { font-weight: 700; font-size: 1.1rem; display: block; margin: 4px 0; }
+        .timeline-card::before { content: ""; position: absolute; left: -39px; top: 5px; width: 16px; height: 16px; border-radius: 50%; background: var(--accent); border: 4px solid var(--bg-light); }
+        .time-date { font-weight: bold; color: var(--accent); }
+        .time-title { font-weight: 700; font-size: 1.1rem; display: block; }
         .time-desc { font-size: 0.95rem; color: var(--text-muted); }
 
         /* --- PROJECTS --- */
         .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
-        .p-card { 
-            background: var(--white); padding: 35px; border-radius: 15px; 
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); border-top: 4px solid var(--accent);
-        }
-        .p-card h3 { margin-bottom: 15px; color: var(--primary); }
-        .tags { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 8px; }
+        .p-card { background: var(--white); padding: 30px; border-radius: 15px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); border-top: 4px solid var(--accent); }
+        .tags { margin-top: 15px; display: flex; flex-wrap: wrap; gap: 8px; }
         .tag { background: #eff6ff; color: #1e40af; padding: 4px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; }
+
+        /* --- LANGUES & ACTIVITES (NEW) --- */
+        .extra-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+        .extra-list { list-style: none; }
+        .extra-list li { position: relative; padding-left: 25px; margin-bottom: 12px; font-size: 1rem; }
+        .extra-list li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
 
         /* --- CONTACT --- */
         #contact { background: var(--primary); color: white; }
-        .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; align-items: start; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; }
         .contact-info a { color: white; text-decoration: none; display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
-        .contact-info i { color: var(--accent); font-size: 1.2rem; }
-        
-        form { background: rgba(255,255,255,0.05); padding: 40px; border-radius: 20px; display: flex; flex-direction: column; gap: 15px; }
-        input, textarea { 
-            padding: 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); 
-            background: rgba(255,255,255,0.9); color: var(--primary); font-size: 1rem;
-        }
-        form button { 
-            background: var(--accent); color: white; padding: 15px; border: none; 
-            border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s;
-        }
-        form button:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.4); }
+        .contact-info i { color: var(--accent); }
+        form { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px; display: flex; flex-direction: column; gap: 15px; }
+        input, textarea { padding: 15px; border-radius: 8px; border: none; background: rgba(255,255,255,0.9); }
+        form button { background: var(--accent); color: white; padding: 15px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
 
         /* --- MOBILE --- */
         @media (max-width: 850px) {
             .hero-flex { flex-direction: column-reverse; text-align: center; }
             .hero-text h1 { font-size: 2.8rem; }
-            .profile-circle { width: 220px; height: 220px; }
-            .contact-grid { grid-template-columns: 1fr; }
-            nav { padding: 1rem; }
-            .nav-links { gap: 12px; font-size: 0.8rem; }
+            .extra-grid { grid-template-columns: 1fr; }
+            .profile-circle { width: 200px; height: 200px; }
         }
     </style>
 </head>
@@ -137,13 +107,12 @@
 
     <input type="checkbox" id="lang-toggle">
 
-<!-- NAVIGATION -->
+    <!-- NAVIGATION -->
     <nav>
         <div class="nav-links">
             <a href="#home" class="fr">Accueil</a><a href="#home" class="en" >Home</a>
-            <a href="#about" class="fr">À propos</a><a href="#about" class="en">About</a>
+            <a href="#profile" class="fr">Profil</a><a href="#profile" class="en">Profile</a>
             <a href="#experience" class="fr">Expérience</a><a href="#experience" class="en">Experience</a>
-            <a href="#education" class="fr">Études</a><a href="#education" class="en">Education</a>
             <a href="#projects" class="fr">Projets</a><a href="#projects" class="en">Projects</a>
             <a href="#contact">Contact</a>
         </div>
@@ -152,27 +121,43 @@
         </label>
     </nav>
 
-    <!-- ACCUEIL -->
+    <!-- ACCUEIL (HERO) -->
     <section id="home">
         <div class="container hero-flex">
             <div class="hero-text">
                 <h1>Mejdi Sidaoui</h1>
                 <p class="subtitle">Junior Data Scientist</p>
-
             </div>
             <div class="profile-circle">
-                <!-- METTEZ VOTRE PHOTO ICI -->
                 <img src="243JMT5460.png" alt="Mejdi Sidaoui">
             </div>
         </div>
     </section>
 
-    <!-- À PROPOS & SKILLS -->
+    <!-- SECTION PROFIL (NOUVEAU) -->
+    <section id="profile" style="background: white;">
+        <div class="container">
+            <h2 class="fr">À Propos de Moi</h2><h2 class="en">About Me</h2>
+            <div class="profile-text">
+                <p class="fr">
+                    Étudiant en informatique spécialisé en Data Science avec une expérience pratique en Python, Deep Learning, Machine Learning et visualisation de données (Power BI). 
+                    Compétent dans l'élaboration de solutions basées sur les données, du nettoyage à la modélisation prédictive. 
+                    Actuellement à la recherche d'un stage ou d'un poste junior en Data Science ou Data Analysis.
+                </p>
+                <p class="en">
+                    Computer Science student specializing in Data Science with hands-on experience in Python, Deep Learning, Machine Learning, and Data Visualization (Power BI). 
+                    Skilled in building data-driven solutions, from data cleaning to predictive modeling. 
+                    Currently seeking an internship or junior role in Data Science or Data Analysis.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERTISE & SKILLS -->
     <section id="about">
         <div class="container">
             <h2 class="fr">Expertise & Compétences</h2><h2 class="en">Expertise & Skills</h2>
             <div class="skills-container">
-                <!-- Colonne Gauche -->
                 <div class="skill-group">
                     <div class="skill-item">
                         <div class="skill-label"><span>Python / R / Java</span><span>90%</span></div>
@@ -183,7 +168,6 @@
                         <div class="bar-bg"><div class="bar-fill" style="width: 95%;"></div></div>
                     </div>
                 </div>
-                <!-- Colonne Droite -->
                 <div class="skill-group">
                     <div class="skill-item">
                         <div class="skill-label"><span>Machine Learning (TF, Scikit)</span><span>85%</span></div>
@@ -198,65 +182,27 @@
         </div>
     </section>
 
-   <!-- SECTION EXPÉRIENCE -->
+   <!-- EXPÉRIENCE -->
     <section id="experience" style="background: #f1f5f9;">
         <div class="container">
-            <h2 class="fr">Expériences Professionnelles</h2>
-            <h2 class="en">Professional Experience</h2>
-            
+            <h2 class="fr">Expériences Professionnelles</h2><h2 class="en">Professional Experience</h2>
             <div class="timeline">
-                <!-- Sagemcom -->
                 <div class="timeline-card">
                     <span class="time-date">06/2025 – 07/2025</span>
                     <span class="time-title">Sagemcom — Business Intelligence Intern</span>
-                    <p class="time-desc fr">Analyse et nettoyage de données CSV via Power Query. Développement de tableaux de bord interactifs sur Power BI Desktop pour le support au reporting.</p>
-                    <p class="time-desc en">Data analysis and cleaning via Power Query. Development of interactive dashboards on Power BI Desktop to support reporting needs.</p>
+                    <p class="time-desc fr">Analyse et nettoyage de données CSV via Power Query. Développement de tableaux de bord interactifs sur Power BI Desktop.</p>
+                    <p class="time-desc en">Data analysis and cleaning via Power Query. Development of interactive dashboards on Power BI Desktop.</p>
                 </div>
-                
-                <!-- ATB -->
                 <div class="timeline-card">
                     <span class="time-date">07/2023 – 08/2023</span>
                     <span class="time-title">Arab Tunisian Bank — Summer Intern</span>
-                    <p class="time-desc fr">Assistance dans le traitement sécurisé des opérations bancaires courantes (crédits, cartes, gestion de comptes) et service client.</p>
-                    <p class="time-desc en">Assisted in secure processing of routine banking operations (credits, cards, account management) and provided customer service.</p>
+                    <p class="time-desc fr">Assistance dans le traitement sécurisé des opérations bancaires courantes et service client.</p>
+                    <p class="time-desc en">Assisted in secure processing of routine banking operations and customer service.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION ÉDUCATION -->
-    <section id="education" style="background: var(--white);">
-        <div class="container">
-            <h2 class="fr">Parcours Académique</h2>
-            <h2 class="en">Education</h2>
-            
-            <div class="timeline">
-                <!-- ESPRIT -->
-                <div class="timeline-card">
-                    <span class="time-date">08/2024 – Présent</span>
-                    <span class="time-title">École Supérieure Privée d'Ingénierie et de Technologie (ESPRIT)</span>
-                    <p class="time-desc fr">Diplôme d'ingénieur en Informatique - Spécialisation Data Science.</p>
-                    <p class="time-desc en">Engineering degree in Computer Science - Data Science specialization.</p>
-                </div>
-
-                <!-- Prépa -->
-                <div class="timeline-card">
-                    <span class="time-date">08/2022 – 08/2024</span>
-                    <span class="time-title">Institut Préparatoire aux Études d'Ingénieurs de Tunis</span>
-                    <p class="time-desc fr">Cycle préparatoire (Mathématiques, Physique, Chimie et Systèmes Techniques Automatisés).</p>
-                    <p class="time-desc en">Preparatory Institute for Engineering Studies (Math, Physics, Chemistry, and Automated Technical Systems).</p>
-                </div>
-
-                <!-- Lycée -->
-                <div class="timeline-card">
-                    <span class="time-date">2022</span>
-                    <span class="time-title">Lycée Sadiki, Tunis</span>
-                    <p class="time-desc fr">Baccalauréat Scientifique (Diplôme de fin d'études secondaires).</p>
-                    <p class="time-desc en">Scientific Baccalaureate (Secondary School Diploma).</p>
-                </div>
-            </div>
-        </div>
-    </section>
     <!-- PROJETS -->
     <section id="projects">
         <div class="container">
@@ -264,22 +210,41 @@
             <div class="project-grid">
                 <div class="p-card">
                     <h3>QoS Buddy (AI Agent)</h3>
-                    <p class="fr">Agent IA pour l'optimisation des réseaux télécom. Analyse des KPIs et diagnostic automatisé des pannes.</p>
-                    <p class="en">AI Agent for telecom network optimization. KPI analysis and automated fault diagnosis.</p>
-                    <div class="tags"><span class="tag">Streamlit</span><span class="tag">AI</span><span class="tag">Telecom</span></div>
+                    <p class="fr">Agent IA pour l'optimisation des réseaux télécom. Analyse des KPIs et diagnostic automatisé.</p>
+                    <p class="en">AI Agent for telecom network optimization. KPI analysis and automated diagnosis.</p>
+                    <div class="tags"><span class="tag">Streamlit</span><span class="tag">AI</span></div>
                 </div>
                 <div class="p-card">
                     <h3>Delivery Time Prediction</h3>
-                    <p class="fr">Modèle de régression pour estimer les délais de livraison logistique avec PCA et Feature Engineering.</p>
-                    <p class="en">Regression model to estimate logistics delivery times using PCA and Feature Engineering.</p>
-                    <div class="tags"><span class="tag">XGBoost</span><span class="tag">Regression</span><span class="tag">PCA</span></div>
+                    <p class="fr">Modèle de régression pour estimer les délais logistiques avec PCA.</p>
+                    <p class="en">Regression model to estimate logistics delivery times using PCA.</p>
+                    <div class="tags"><span class="tag">XGBoost</span><span class="tag">PCA</span></div>
                 </div>
-                <div class="p-card">
-                    <h3>Breast Cancer Detection</h3>
-                    <p class="fr">Classification médicale haute précision basée sur des algorithmes de Machine Learning.</p>
-                    <p class="en">High-precision medical classification based on Machine Learning algorithms.</p>
-                    <div class="tags"><span class="tag">Healthcare</span><span class="tag">Scikit-Learn</span></div>
-                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LANGUES & ACTIVITES (NOUVEAU) -->
+    <section id="extra" style="background: #f1f5f9;">
+        <div class="container extra-grid">
+            <!-- Langues -->
+            <div>
+                <h2 class="fr">Langues</h2><h2 class="en">Languages</h2>
+                <ul class="extra-list">
+                    <li class="fr">Anglais (Professionnel)</li><li class="en">English (Professional)</li>
+                    <li class="fr">Français (Courant)</li><li class="en">French (Fluent)</li>
+                    <li class="fr">Arabe (Langue maternelle)</li><li class="en">Arabic (Native)</li>
+                </ul>
+            </div>
+            <!-- Activités -->
+            <div>
+                <h2 class="fr">Activités</h2><h2 class="en">Activities</h2>
+                <ul class="extra-list">
+                    <li class="fr">Membre, IEEE ESPRIT Student Branch</li>
+                    <li class="en">Member, IEEE ESPRIT Student Branch</li>
+                    <li class="fr">Diplôme en Musique Arabe, Conservatoire National de Musique de Tunis</li>
+                    <li class="en">Diploma in Arab Music, Tunis National Conservatory of Music</li>
+                </ul>
             </div>
         </div>
     </section>
@@ -288,32 +253,23 @@
     <section id="contact">
         <div class="container contact-grid">
             <div class="contact-info">
-                <h2 style="color: white; border:none; padding:0;" class="fr">Contactez-moi</h2>
-                <h2 style="color: white; border:none; padding:0;" class="en">Get in Touch</h2>
-                <p class="fr" style="margin-bottom:30px; opacity:0.8;">Disponible pour un stage ou une opportunité junior.</p>
-                <p class="en" style="margin-bottom:30px; opacity:0.8;">Available for internships or junior opportunities.</p>
-                
+                <h2 style="color: white; border:none; padding:0;" class="fr">Contact</h2>
+                <h2 style="color: white; border:none; padding:0;" class="en">Contact</h2>
                 <a href="mailto:Mejdisidaoui50@gmail.com"><i class="fas fa-envelope"></i> Mejdisidaoui50@gmail.com</a>
                 <a href="tel:+21655239555"><i class="fas fa-phone"></i> (+216) 55 239 555</a>
-                <a href="https://linkedin.com/in/mejdi-sidaoui-77111b326" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn Profile</a>
+                <a href="https://linkedin.com/in/mejdi-sidaoui-77111b326" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
             </div>
-
-            <!-- FORMULAIRE FORMSPREE -->
             <form action="https://formspree.io/f/xdayglkp" method="POST">
-                <!-- Redirection après envoi -->
-                <input type="hidden" name="_next" value="https://mejdi-sidaoui.github.io/MonCV/thanks.html">
-                
                 <input type="text" name="name" placeholder="Nom / Name" required>
                 <input type="email" name="email" placeholder="Email" required>
-                <textarea name="message" rows="5" placeholder="Votre message / Message" required></textarea>
-                
-                <button type="submit" class="fr">Envoyer le message</button>
-                <button type="submit" class="en">Send Message</button>
+                <textarea name="message" rows="4" placeholder="Message" required></textarea>
+                <button type="submit" class="fr">Envoyer</button>
+                <button type="submit" class="en">Send</button>
             </form>
         </div>
     </section>
 
-    <footer style="background: #0f172a; color: #475569; text-align: center; padding: 40px; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.05);">
+    <footer style="background: #0f172a; color: #475569; text-align: center; padding: 30px; font-size: 0.8rem;">
         Mejdi Sidaoui © 2026 — Junior Data Scientist
     </footer>
 
