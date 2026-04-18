@@ -18,6 +18,9 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; }
+
+        section, div[id] { scroll-margin-top: 90px; }
+
         body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; scroll-behavior: smooth; }
 
         /* --- LOGIQUE DE LANGUE (CSS ONLY) --- */
@@ -110,10 +113,13 @@
     <!-- NAVIGATION -->
     <nav>
         <div class="nav-links">
-            <a href="#home" class="fr">Accueil</a><a href="#home" class="en" >Home</a>
+            <a href="#home" class="fr">Accueil</a><a href="#home" class="en">Home</a>
             <a href="#profile" class="fr">Profil</a><a href="#profile" class="en">Profile</a>
+            <a href="#about" class="fr">Compétences</a><a href="#about" class="en">Skills</a>
             <a href="#experience" class="fr">Expérience</a><a href="#experience" class="en">Experience</a>
             <a href="#projects" class="fr">Projets</a><a href="#projects" class="en">Projects</a>
+            <a href="#languages" class="fr">Langues</a><a href="#languages" class="en">Languages</a>
+            <a href="#activities" class="fr">Activités</a><a href="#activities" class="en">Activities</a>
             <a href="#contact">Contact</a>
         </div>
         <label for="lang-toggle" class="lang-btn">
@@ -224,20 +230,20 @@
         </div>
     </section>
 
-    <!-- LANGUES & ACTIVITES (NOUVEAU) -->
+    <!-- LANGUES & ACTIVITES -->
     <section id="extra" style="background: #f1f5f9;">
         <div class="container extra-grid">
             <!-- Langues -->
-            <div>
+            <div id="languages">
                 <h2 class="fr">Langues</h2><h2 class="en">Languages</h2>
                 <ul class="extra-list">
                     <li class="fr">Anglais (Professionnel)</li><li class="en">English (Professional)</li>
-                    <li class="fr">Français (Courant)</li><li class="en">French (Fluent)</li>
+                    <li class="fr">Français (Professionnel)</li><li class="en">French (Professional)</li>
                     <li class="fr">Arabe (Langue maternelle)</li><li class="en">Arabic (Native)</li>
                 </ul>
             </div>
             <!-- Activités -->
-            <div>
+            <div id="activities">
                 <h2 class="fr">Activités</h2><h2 class="en">Activities</h2>
                 <ul class="extra-list">
                     <li class="fr">Membre, IEEE ESPRIT Student Branch</li>
@@ -248,7 +254,6 @@
             </div>
         </div>
     </section>
-
     <!-- CONTACT -->
     <section id="contact">
         <div class="container contact-grid">
