@@ -9,23 +9,36 @@
     <style>
         /* --- VARIABLES ET THÈME --- */
         :root {
-            --primary: #0f172a;    /* Bleu Nuit */
-            --accent: #2563eb;     /* Bleu Professionnel */
+            --primary: #0f172a;    
+            --accent: #2563eb;     
             --bg-light: #f8fafc;
             --text-dark: #1e293b;
             --text-muted: #64748b;
             --white: #ffffff;
+            --container-padding: 5%;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; }
 
-        section, div[id] { scroll-margin-top: 90px; }
+        html { scroll-behavior: smooth; }
 
-        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; scroll-behavior: smooth; }
+        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
+
+        section { padding: 80px var(--container-padding); }
+
+        .container { max-width: 1100px; margin: 0 auto; }
+
+        h2 { 
+            font-size: clamp(1.5rem, 5vw, 2rem); 
+            margin-bottom: 2rem; 
+            border-left: 5px solid var(--accent); 
+            padding-left: 15px; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+        }
 
         /* --- LOGIQUE DE LANGUE (CSS ONLY) --- */
         #lang-toggle { display: none; }
-        
         .en { display: none; }
         #lang-toggle:checked ~ * .fr { display: none; }
         #lang-toggle:checked ~ * .en { display: block; }
@@ -35,124 +48,104 @@
         /* --- NAVIGATION --- */
         nav {
             position: fixed; width: 100%; background: rgba(255, 255, 255, 0.95);
-            padding: 1rem 5%; display: flex; justify-content: space-between;
+            padding: 0.8rem var(--container-padding); 
+            display: flex; justify-content: space-between;
             align-items: center; box-shadow: 0 1px 10px rgba(0,0,0,0.05); z-index: 1000;
             backdrop-filter: blur(10px);
         }
-        .nav-links { display: flex; gap: 25px; align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 0.9rem; transition: 0.3s; white-space: nowrap; }
+        .nav-links { display: flex; gap: 15px; align-items: center; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        .nav-links a { 
+            text-decoration: none; color: var(--text-dark); font-weight: 600; 
+            font-size: 0.85rem; transition: 0.3s; white-space: nowrap; 
+        }
         .nav-links a:hover { color: var(--accent); }
-        .lang-btn { background: var(--primary); color: white; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 0.8rem; font-weight: bold; transition: 0.3s; }
-
-        /* --- SECTIONS --- */
-        section { padding: 80px 10% 40px; }
-        .container { max-width: 1100px; margin: 0 auto; }
-        h2 { font-size: 2rem; margin-bottom: 2rem; border-left: 5px solid var(--accent); padding-left: 15px; text-transform: uppercase; letter-spacing: 1px; }
+        .lang-btn { 
+            background: var(--primary); color: white; padding: 6px 12px; 
+            border-radius: 20px; cursor: pointer; font-size: 0.75rem; 
+            font-weight: bold; flex-shrink: 0; margin-left: 10px;
+        }
 
         /* --- HERO --- */
-        #home { height: 80vh; display: flex; align-items: center; background: radial-gradient(circle at top right, #1e293b, #0f172a); color: white; }
-        .hero-flex { display: flex; justify-content: space-between; align-items: center; width: 100%; gap: 40px; }
-        .hero-text h1 { font-size: 4rem; margin-bottom: 10px; }
-        .hero-text .subtitle { font-size: 1.5rem; color: var(--accent); font-weight: 300; }
-        .profile-circle { width: 300px; height: 300px; border-radius: 50%; border: 8px solid rgba(255,255,255,0.1); overflow: hidden; background: #334155; }
+        #home { 
+            min-height: 90vh; display: flex; align-items: center; 
+            background: radial-gradient(circle at top right, #1e293b, #0f172a); 
+            color: white; padding-top: 100px;
+        }
+        .hero-flex { 
+            display: flex; justify-content: space-between; 
+            align-items: center; width: 100%; gap: 30px; 
+        }
+        .hero-text h1 { font-size: clamp(2.5rem, 8vw, 4rem); line-height: 1.1; margin-bottom: 15px; }
+        .hero-text .subtitle { font-size: clamp(1.1rem, 4vw, 1.5rem); color: var(--accent); font-weight: 300; }
+        
+        .profile-circle { 
+            flex-shrink: 0;
+            width: clamp(200px, 30vw, 320px); 
+            height: clamp(200px, 30vw, 320px); 
+            border-radius: 50%; border: 8px solid rgba(255,255,255,0.1); 
+            overflow: hidden; background: #334155; 
+        }
         .profile-circle img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* --- PROFIL (NEW) --- */
-        .profile-text { font-size: 1.1rem; color: var(--text-dark); max-width: 900px; line-height: 1.8; }
-
         /* --- SKILLS --- */
-        .skills-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .skill-group { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+        .skills-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .skill-group { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
         .skill-item { margin-bottom: 15px; }
-        .skill-label { display: flex; justify-content: space-between; margin-bottom: 5px; font-weight: 600; }
+        .skill-label { display: flex; justify-content: space-between; margin-bottom: 5px; font-weight: 600; font-size: 0.9rem; }
         .bar-bg { height: 8px; background: #e2e8f0; border-radius: 10px; }
         .bar-fill { height: 100%; background: var(--accent); border-radius: 10px; }
 
         /* --- TIMELINE --- */
-        .timeline { border-left: 2px solid #e2e8f0; padding-left: 30px; margin-left: 10px; }
-        .timeline-card { position: relative; margin-bottom: 40px; }
-        .timeline-card::before { content: ""; position: absolute; left: -39px; top: 5px; width: 16px; height: 16px; border-radius: 50%; background: var(--accent); border: 4px solid var(--bg-light); }
-        .time-date { font-weight: bold; color: var(--accent); }
-        .time-title { font-weight: 700; font-size: 1.1rem; display: block; }
+        .timeline { border-left: 2px solid #e2e8f0; padding-left: 20px; margin-left: 10px; }
+        .timeline-card { position: relative; margin-bottom: 30px; }
+        .timeline-card::before { 
+            content: ""; position: absolute; left: -29px; top: 5px; 
+            width: 14px; height: 14px; border-radius: 50%; 
+            background: var(--accent); border: 3px solid var(--bg-light); 
+        }
+        .time-date { font-weight: bold; color: var(--accent); font-size: 0.9rem; }
+        .time-title { font-weight: 700; font-size: 1.1rem; display: block; margin: 5px 0; }
         .time-desc { font-size: 0.95rem; color: var(--text-muted); }
 
-       /* --- PROJECTS --- */
-.project-grid { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-    gap: 25px; 
-}
+        /* --- PROJECTS --- */
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .p-card {
+            background: var(--white); padding: 25px; border-radius: 15px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05); border-top: 5px solid var(--accent);
+            display: flex; flex-direction: column; height: 100%; transition: 0.3s;
+        }
+        .p-card:hover { transform: translateY(-5px); }
+        .p-card h3 { font-size: 1.15rem; color: var(--primary); margin-bottom: 12px; }
+        .p-card p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; flex-grow: 1; }
+        .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tag { background: #eff6ff; color: var(--accent); padding: 4px 10px; border-radius: 6px; font-size: 0.7rem; font-weight: 700; }
 
-.p-card {
-    background: var(--white); /* Fond blanc indispensable */
-    padding: 30px; 
-    border-radius: 15px; 
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08); /* Ombre douce comme sur l'image */
-    border-top: 5px solid var(--accent); /* La fameuse barre bleue en haut */
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    transition: transform 0.3s ease; /* Petit effet au survol */
-}
-
-.p-card:hover {
-    transform: translateY(-5px); /* La carte monte légèrement au survol */
-}
-
-.p-card h3 {
-    font-size: 1.2rem;
-    color: var(--primary);
-    margin-bottom: 15px;
-    line-height: 1.3;
-    font-weight: 700;
-}
-
-.p-card p {
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    margin-bottom: 20px;
-    flex-grow: 1; /* Pousse les tags vers le bas pour l'alignement */
-    line-height: 1.6;
-}
-
-.tags { 
-    margin-top: auto; /* Aligne les tags en bas de la carte */
-    display: flex; 
-    flex-wrap: wrap; 
-    gap: 8px; 
-}
-
-.tag { 
-    background: #eff6ff; /* Bleu très clair */
-    color: var(--accent); /* Bleu pro */
-    padding: 6px 14px; 
-    border-radius: 8px; 
-    font-size: 0.75rem; 
-    font-weight: 700; 
-}
-
-        /* --- LANGUES & ACTIVITES (NEW) --- */
-        .extra-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+        /* --- EXTRA (LANGUES/ACTIVITÉS) --- */
+        .extra-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; }
         .extra-list { list-style: none; }
-        .extra-list li { position: relative; padding-left: 25px; margin-bottom: 12px; font-size: 1rem; }
+        .extra-list li { position: relative; padding-left: 25px; margin-bottom: 12px; }
         .extra-list li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
 
         /* --- CONTACT --- */
         #contact { background: var(--primary); color: white; }
-        .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; }
-        .contact-info a { color: white; text-decoration: none; display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
-        .contact-info i { color: var(--accent); }
-        form { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 20px; display: flex; flex-direction: column; gap: 15px; }
-        input, textarea { padding: 15px; border-radius: 8px; border: none; background: rgba(255,255,255,0.9); }
-        form button { background: var(--accent); color: white; padding: 15px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .contact-info a { color: white; text-decoration: none; display: flex; align-items: center; gap: 15px; margin-bottom: 20px; font-size: 0.95rem; }
+        .contact-info i { color: var(--accent); width: 20px; }
+        form { background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px; display: flex; flex-direction: column; gap: 15px; }
+        input, textarea { padding: 12px; border-radius: 8px; border: none; width: 100%; }
+        form button { background: var(--accent); color: white; padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        form button:hover { opacity: 0.9; }
 
-        /* --- MOBILE --- */
-        @media (max-width: 850px) {
-            .hero-flex { flex-direction: column-reverse; text-align: center; }
-            .hero-text h1 { font-size: 2.8rem; }
-            .extra-grid { grid-template-columns: 1fr; }
-            .profile-circle { width: 200px; height: 200px; }
+        /* --- RESPONSIVE ADJUSTMENTS --- */
+        @media (max-width: 768px) {
+            nav { justify-content: center; flex-direction: column; gap: 10px; }
+            .nav-links { width: 100%; justify-content: flex-start; padding-bottom: 5px; }
+            .hero-flex { flex-direction: column-reverse; text-align: center; margin-top: 20px; }
+            section { padding: 60px var(--container-padding); }
+            .profile-circle { width: 180px; height: 180px; }
         }
+
+        footer { background: #0b1120; color: #64748b; text-align: center; padding: 40px var(--container-padding); font-size: 0.8rem; }
     </style>
 </head>
 <body>
@@ -165,10 +158,8 @@
             <a href="#home" class="fr">Accueil</a><a href="#home" class="en">Home</a>
             <a href="#profile" class="fr">Profil</a><a href="#profile" class="en">Profile</a>
             <a href="#about" class="fr">Compétences</a><a href="#about" class="en">Skills</a>
-            <a href="#experience" class="fr">Expérience</a><a href="#experience" class="en">Experience</a>
+            <a href="#experience" class="fr">Parcours</a><a href="#experience" class="en">Experience</a>
             <a href="#projects" class="fr">Projets</a><a href="#projects" class="en">Projects</a>
-            <a href="#languages" class="fr">Langues</a><a href="#languages" class="en">Languages</a>
-            <a href="#activities" class="fr">Activités</a><a href="#activities" class="en">Activities</a>
             <a href="#contact">Contact</a>
         </div>
         <label for="lang-toggle" class="lang-btn">
@@ -184,12 +175,12 @@
                 <p class="subtitle">Junior Data Scientist</p>
             </div>
             <div class="profile-circle">
-                <img src="243JMT5460.png" alt="Mejdi Sidaoui">
+                <img src="MejdiSidaoui.png" alt="Mejdi Sidaoui">
             </div>
         </div>
     </section>
 
-    <!-- SECTION PROFIL (NOUVEAU) -->
+    <!-- SECTION PROFIL -->
     <section id="profile" style="background: white;">
         <div class="container">
             <h2 class="fr">À Propos de Moi</h2><h2 class="en">About Me</h2>
@@ -197,21 +188,19 @@
                 <p class="fr">
                     Étudiant en informatique spécialisé en Data Science avec une expérience pratique en Python, Deep Learning, Machine Learning et visualisation de données (Power BI). 
                     Compétent dans l'élaboration de solutions basées sur les données, du nettoyage à la modélisation prédictive. 
-                    Actuellement à la recherche d'un stage ou d'un poste junior en Data Science ou Data Analysis.
                 </p>
                 <p class="en">
                     Computer Science student specializing in Data Science with hands-on experience in Python, Deep Learning, Machine Learning, and Data Visualization (Power BI). 
                     Skilled in building data-driven solutions, from data cleaning to predictive modeling. 
-                    Currently seeking an internship or junior role in Data Science or Data Analysis.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- EXPERTISE & SKILLS -->
+    <!-- SKILLS -->
     <section id="about">
         <div class="container">
-            <h2 class="fr">Expertise & Compétences</h2><h2 class="en">Expertise & Skills</h2>
+            <h2 class="fr">Expertise</h2><h2 class="en">Expertise</h2>
             <div class="skills-container">
                 <div class="skill-group">
                     <div class="skill-item">
@@ -219,17 +208,17 @@
                         <div class="bar-bg"><div class="bar-fill" style="width: 90%;"></div></div>
                     </div>
                     <div class="skill-item">
-                        <div class="skill-label"><span>Data Viz (Power BI, Seaborn)</span><span>95%</span></div>
+                        <div class="skill-label"><span>Data Viz (Power BI)</span><span>95%</span></div>
                         <div class="bar-bg"><div class="bar-fill" style="width: 95%;"></div></div>
                     </div>
                 </div>
                 <div class="skill-group">
                     <div class="skill-item">
-                        <div class="skill-label"><span>Machine Learning (TF, Scikit)</span><span>85%</span></div>
+                        <div class="skill-label"><span>ML (Scikit, TF)</span><span>85%</span></div>
                         <div class="bar-bg"><div class="bar-fill" style="width: 85%;"></div></div>
                     </div>
                     <div class="skill-item">
-                        <div class="skill-label"><span>SQL / NoSQL / Neo4j</span><span>80%</span></div>
+                        <div class="skill-label"><span>SQL / NoSQL</span><span>80%</span></div>
                         <div class="bar-bg"><div class="bar-fill" style="width: 80%;"></div></div>
                     </div>
                 </div>
@@ -240,93 +229,77 @@
    <!-- EXPÉRIENCE -->
     <section id="experience" style="background: #f1f5f9;">
         <div class="container">
-            <h2 class="fr">Expériences Professionnelles</h2><h2 class="en">Professional Experience</h2>
+            <h2 class="fr">Expériences</h2><h2 class="en">Experience</h2>
             <div class="timeline">
                 <div class="timeline-card">
                     <span class="time-date">06/2025 – 07/2025</span>
-                    <span class="time-title">Sagemcom — Business Intelligence Intern</span>
-                    <p class="time-desc fr">Analyse et nettoyage de données CSV via Power Query. Développement de tableaux de bord interactifs sur Power BI Desktop.</p>
-                    <p class="time-desc en">Data analysis and cleaning via Power Query. Development of interactive dashboards on Power BI Desktop.</p>
+                    <span class="time-title">Sagemcom — BI Intern</span>
+                    <p class="time-desc fr">Analyse et nettoyage de données CSV via Power Query. Tableaux de bord Power BI.</p>
+                    <p class="time-desc en">Data analysis and cleaning via Power Query. Power BI Dashboards.</p>
                 </div>
                 <div class="timeline-card">
                     <span class="time-date">07/2023 – 08/2023</span>
-                    <span class="time-title">Arab Tunisian Bank — Summer Intern</span>
-                    <p class="time-desc fr">Assistance dans le traitement sécurisé des opérations bancaires courantes et service client.</p>
-                    <p class="time-desc en">Assisted in secure processing of routine banking operations and customer service.</p>
+                    <span class="time-title">Arab Tunisian Bank — Intern</span>
+                    <p class="time-desc fr">Traitement des opérations bancaires courantes et service client.</p>
+                    <p class="time-desc en">Processing routine banking operations and customer service.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- PROJETS -->
-<section id="projects">
-    <div class="container">
-        <h2 class="fr">Projets</h2><h2 class="en">Projects</h2>
-        <div class="project-grid">
-            
-            <!-- Projet 1 -->
-            <div class="p-card">
-                <h3>QoS Buddy — AI Agent for Telecom QoS Monitoring</h3>
-                <p class="fr">Agent IA pour l'optimisation autonome de la QoS télécom. Analyse les KPIs réseau, détecte les dégradations et recommande des actions correctives via un dashboard Streamlit simulant des flux temps réel.</p>
-                <p class="en">AI agent for autonomous telecom QoS monitoring. Analyzes network KPIs, detects degradations, and recommends corrective actions via a Streamlit dashboard simulating real-time streams.</p>
-                <div class="tags">
-                    <span class="tag">Streamlit</span><span class="tag">AI</span><span class="tag">ML</span>
+    <section id="projects">
+        <div class="container">
+            <h2 class="fr">Projets Pro</h2><h2 class="en">Key Projects</h2>
+            <div class="project-grid">
+                <div class="p-card">
+                    <h3>QoS Buddy — AI Telecom Agent</h3>
+                    <p class="fr">Agent IA pour l'optimisation autonome de la QoS télécom. Dashboard Streamlit temps réel.</p>
+                    <p class="en">AI agent for autonomous telecom QoS monitoring. Real-time Streamlit dashboard.</p>
+                    <div class="tags"><span class="tag">Streamlit</span><span class="tag">AI</span></div>
+                </div>
+                <div class="p-card">
+                    <h3>Delivery Time Prediction</h3>
+                    <p class="fr">Pipeline ML complet pour prédire les délais de livraison (ETA). Feature engineering & PCA.</p>
+                    <p class="en">End-to-end ML pipeline to predict delivery time estimates (ETA). PCA & XGBoost.</p>
+                    <div class="tags"><span class="tag">XGBoost</span><span class="tag">PCA</span></div>
+                </div>
+                <div class="p-card">
+                    <h3>Breast Cancer Detection</h3>
+                    <p class="fr">Pipeline de classification médicale haute précision pour le diagnostic précoce.</p>
+                    <p class="en">High-precision medical classification pipeline for early diagnosis.</p>
+                    <div class="tags"><span class="tag">Healthcare</span><span class="tag">Scikit-Learn</span></div>
                 </div>
             </div>
-
-            <!-- Projet 2 -->
-            <div class="p-card">
-                <h3>Delivery Time Prediction (Last-Mile Logistics)</h3>
-                <p class="fr">Pipeline ML complet pour prédire les délais de livraison (ETA). Inclus : feature engineering, traitement des valeurs aberrantes, PCA et modélisation de régression pour des prédictions exploitables.</p>
-                <p class="en">End-to-end ML pipeline to predict delivery time estimates (ETA). Includes feature engineering, outlier treatment, PCA, and regression modeling for actionable predictions.</p>
-                <div class="tags">
-                    <span class="tag">XGBoost</span><span class="tag">PCA</span><span class="tag">Regression</span>
-                </div>
-            </div>
-
-            <!-- Projet 3 -->
-            <div class="p-card">
-                <h3>Machine Learning for Breast Cancer Detection</h3>
-                <p class="fr">Pipeline de classification médicale haute précision. Sélection de caractéristiques et entraînement de modèles pour le diagnostic à partir de données médicales (précision, sensibilité, spécificité).</p>
-                <p class="en">High-precision medical classification pipeline. Feature selection and model training for diagnosis based on medical data (accuracy, sensitivity, and specificity metrics).</p>
-                <div class="tags">
-                    <span class="tag">Healthcare</span><span class="tag">Scikit-Learn</span><span class="tag">ML</span>
-                </div>
-            </div>
-
         </div>
-    </div>
-</section>
-    <!-- LANGUES & ACTIVITES -->
+    </section>
+
+    <!-- EXTRA -->
     <section id="extra" style="background: #f1f5f9;">
         <div class="container extra-grid">
-            <!-- Langues -->
             <div id="languages">
                 <h2 class="fr">Langues</h2><h2 class="en">Languages</h2>
                 <ul class="extra-list">
-                    <li class="fr">Anglais (Professionnel)</li><li class="en">English (Professional)</li>
-                    <li class="fr">Français (Professionnel)</li><li class="en">French (Professional)</li>
-                    <li class="fr">Arabe (Langue maternelle)</li><li class="en">Arabic (Native)</li>
+                    <li><span class="fr">Anglais (Pro)</span><span class="en">English (Professional)</span></li>
+                    <li><span class="fr">Français (Pro)</span><span class="en">French (Professional)</span></li>
+                    <li><span class="fr">Arabe (Maternel)</span><span class="en">Arabic (Native)</span></li>
                 </ul>
             </div>
-            <!-- Activités -->
             <div id="activities">
                 <h2 class="fr">Activités</h2><h2 class="en">Activities</h2>
                 <ul class="extra-list">
-                    <li class="fr">Membre, IEEE ESPRIT Student Branch</li>
-                    <li class="en">Member, IEEE ESPRIT Student Branch</li>
-                    <li class="fr">Diplôme en Musique Arabe, Conservatoire National de Musique de Tunis</li>
-                    <li class="en">Diploma in Arab Music, Tunis National Conservatory of Music</li>
+                    <li>IEEE ESPRIT Student Branch</li>
+                    <li><span class="fr">Diplôme Musique Arabe</span><span class="en">Diploma in Arab Music</span></li>
                 </ul>
             </div>
         </div>
     </section>
+
     <!-- CONTACT -->
     <section id="contact">
         <div class="container contact-grid">
             <div class="contact-info">
-                <h2 style="color: white; border:none; padding:0;" class="fr">Contact</h2>
-                <h2 style="color: white; border:none; padding:0;" class="en">Contact</h2>
+                <h2 style="color: white; border:none; padding:0;">Contact</h2>
                 <a href="mailto:Mejdisidaoui50@gmail.com"><i class="fas fa-envelope"></i> Mejdisidaoui50@gmail.com</a>
                 <a href="tel:+21655239555"><i class="fas fa-phone"></i> (+216) 55 239 555</a>
                 <a href="https://linkedin.com/in/mejdi-sidaoui-77111b326" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
@@ -335,13 +308,14 @@
                 <input type="text" name="name" placeholder="Nom / Name" required>
                 <input type="email" name="email" placeholder="Email" required>
                 <textarea name="message" rows="4" placeholder="Message" required></textarea>
-                <button type="submit" class="fr">Envoyer</button>
-                <button type="submit" class="en">Send</button>
+                <button type="submit">
+                    <span class="fr">Envoyer</span><span class="en">Send Message</span>
+                </button>
             </form>
         </div>
     </section>
 
-    <footer style="background: #0f172a; color: #475569; text-align: center; padding: 30px; font-size: 0.8rem;">
+    <footer>
         Mejdi Sidaoui © 2026 — Junior Data Scientist
     </footer>
 
