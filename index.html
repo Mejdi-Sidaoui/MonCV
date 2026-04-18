@@ -78,7 +78,25 @@
 
         /* --- PROJECTS --- */
         .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
-        .p-card { background: var(--white); padding: 30px; border-radius: 15px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); border-top: 4px solid var(--accent); }
+        .p-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+        .p-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+    flex-grow: 1; /* Pousse les tags vers le bas */
+    text-align: justify;
+}
+
+        .p-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
         .tags { margin-top: 15px; display: flex; flex-wrap: wrap; gap: 8px; }
         .tag { background: #eff6ff; color: #1e40af; padding: 4px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; }
 
@@ -214,18 +232,43 @@
         <div class="container">
             <h2 class="fr">Projets</h2><h2 class="en">Projects</h2>
             <div class="project-grid">
+                
+                <!-- Projet 1 -->
                 <div class="p-card">
-                    <h3>QoS Buddy (AI Agent)</h3>
-                    <p class="fr">Agent IA pour l'optimisation des réseaux télécom. Analyse des KPIs et diagnostic automatisé.</p>
-                    <p class="en">AI Agent for telecom network optimization. KPI analysis and automated diagnosis.</p>
-                    <div class="tags"><span class="tag">Streamlit</span><span class="tag">AI</span></div>
+                    <h3>QoS Buddy — AI Agent for Telecom QoS Monitoring and Optimization</h3>
+                    <div class="fr">
+                        <p>Projet d'agent IA pour la surveillance et l'optimisation autonome de la QoS télécom. Conçu pour analyser les KPIs réseau, détecter les dégradations de service et recommander des actions correctives. Développement d'un prototype de tableau de bord Streamlit intégrant une couche de machine learning simulant des flux de KPIs en temps réel (latence, gigue, perte de paquets) et identifiant les problèmes de mise en mémoire tampon.</p>
+                    </div>
+                    <div class="en">
+                        <p>AI-agent project for autonomous telecom QoS monitoring and optimization, designed to analyze network KPIs, detect service degradations, diagnose likely root causes, and recommend corrective actions. Built a Streamlit-based prototype dashboard with a machine-learning layer that simulates real-time KPI streams (latency, jitter, packet loss, throughput), identifies buffer-related issues such as bufferbloat, and suggests optimization actions.</p>
+                    </div>
+                    <div class="tags"><span class="tag">AI Agent</span><span class="tag">Streamlit</span><span class="tag">Telecom</span><span class="tag">ML</span></div>
                 </div>
+
+                <!-- Projet 2 -->
                 <div class="p-card">
-                    <h3>Delivery Time Prediction</h3>
-                    <p class="fr">Modèle de régression pour estimer les délais logistiques avec PCA.</p>
-                    <p class="en">Regression model to estimate logistics delivery times using PCA.</p>
-                    <div class="tags"><span class="tag">XGBoost</span><span class="tag">PCA</span></div>
+                    <h3>Delivery Time Prediction for Last-Mile Logistics</h3>
+                    <div class="fr">
+                        <p>Développement d'un pipeline de machine learning complet pour prédire les estimations de délais de livraison (ETA). Application du nettoyage de données, feature engineering, imputation des valeurs manquantes, traitement des valeurs aberrantes, PCA et modélisation de régression pour générer des prédictions de livraison exploitables.</p>
+                    </div>
+                    <div class="en">
+                        <p>Developed an end-to-end machine learning pipeline to predict delivery time estimates (ETA) for a last-mile logistics platform. Applied data cleaning, feature engineering, missing-value imputation, outlier treatment, encoding, robust scaling, PCA, and regression modeling to generate actionable delivery-time predictions.</p>
+                    </div>
+                    <div class="tags"><span class="tag">Machine Learning</span><span class="tag">Regression</span><span class="tag">PCA</span><span class="tag">Logistics</span></div>
                 </div>
+
+                <!-- Projet 3 -->
+                <div class="p-card">
+                    <h3>Machine Learning for Breast Cancer Detection</h3>
+                    <div class="fr">
+                        <p>Conception et implémentation d'un pipeline de classification pour la détection du cancer du sein à partir de données médicales diagnostiques. Inclut le prétraitement des données, la sélection des caractéristiques, l'entraînement des modèles et une évaluation comparative des performances basée sur la précision, la sensibilité et la spécificité.</p>
+                    </div>
+                    <div class="en">
+                        <p>Designed and implemented a machine learning classification pipeline for breast cancer detection using diagnostic medical data, involving data preprocessing, feature selection, model training, and comparative performance evaluation across multiple algorithms using accuracy, sensitivity, and specificity metrics.</p>
+                    </div>
+                    <div class="tags"><span class="tag">Healthcare</span><span class="tag">Classification</span><span class="tag">Scikit-Learn</span></div>
+                </div>
+
             </div>
         </div>
     </section>
