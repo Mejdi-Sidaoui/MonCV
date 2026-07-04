@@ -133,14 +133,41 @@
         .tags { display: flex; flex-wrap: wrap; gap: 8px; }
         .tag { background: #eff6ff; color: var(--accent); padding: 5px 12px; border-radius: 8px; font-size: 0.75rem; font-weight: 700; }
 
-        @media (max-width: 1024px) { .project-grid { grid-template-columns: repeat(2, 1fr); } }
+        /* --- CONTACT --- */
+        #contact { background: var(--primary); color: white; }
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .contact-info a { color: white; text-decoration: none; display: flex; align-items: center; gap: 15px; margin-bottom: 20px; font-size: 1rem; }
+        .contact-info i { color: var(--accent); width: 25px; font-size: 1.2rem; }
+        
+        form { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 15px; display: flex; flex-direction: column; gap: 15px; }
+        input, textarea { 
+            padding: 12px; 
+            border-radius: 8px; 
+            border: 1px solid rgba(255,255,255,0.1); 
+            width: 100%; 
+            background: rgba(255,255,255,0.9); 
+            color: #1e293b; 
+            font-size: 1rem;
+        }
+        form button { 
+            background: var(--accent); 
+            color: white; 
+            padding: 12px; 
+            border: none; 
+            border-radius: 8px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            transition: 0.3s; 
+            font-size: 1rem;
+        }
+        form button:hover { background: #1d4ed8; transform: translateY(-2px); }
+
         @media (max-width: 768px) {
-            .project-grid { grid-template-columns: 1fr; }
             nav { justify-content: center; flex-direction: column; gap: 10px; }
             .nav-links { width: 100%; justify-content: flex-start; padding-bottom: 5px; }
             .hero-flex { flex-direction: column-reverse; text-align: center; margin-top: 20px; }
-            section { padding: 60px var(--container-padding); }
-            .profile-circle { width: 180px; height: 180px; }
+            .project-grid { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
         }
 
         footer { background: #0b1120; color: #64748b; text-align: center; padding: 40px var(--container-padding); font-size: 0.8rem; }
@@ -174,7 +201,7 @@
                 <p class="subtitle">Junior Data Scientist</p>
             </div>
             <div class="profile-circle">
-                <img src="MejdiSidaoui.png" alt="Mejdi Sidaoui" style="width: 100%; height: 100%; object-fit: cover;">
+                <img src="MejdiSidaoui.png" alt="Mejdi Sidaoui">
             </div>
         </div>
     </section>
@@ -231,20 +258,20 @@
                 <div class="timeline-card">
                     <span class="time-date">06/2026 – Présent</span>
                     <span class="time-title">Arab Tunisian Bank — Stagiaire Développeur Power BI</span>
-                    <p class="time-desc fr">Conception d'un tableau de bord financier avec modèle en étoile, KPIs DAX et alertes de risque dynamiques pour le suivi de portefeuille.</p>
-                    <p class="time-desc en">Designed a financial portfolio dashboard using star schema and DAX KPIs with dynamic risk alerts for investment decision-making.</p>
+                    <p class="time-desc fr">Conception d'un dashboard de suivi de portefeuille financier avec modèle en étoile et KPIs DAX pour l'aide à la décision.</p>
+                    <p class="time-desc en">Designed a financial portfolio dashboard using star schema and DAX KPIs for investment decision-making.</p>
                 </div>
                 <div class="timeline-card">
                     <span class="time-date">08/2025 – 09/2025</span>
                     <span class="time-title">Qatar National Bank — Stagiaire BI & Reporting</span>
-                    <p class="time-desc fr">Conception et développement d'un tableau de bord Power BI de pilotage de l'activité monétique avec visualisations interactives.</p>
-                    <p class="time-desc en">Developed an e-banking management dashboard with interactive visualizations to optimize operational tracking and decision-making.</p>
+                    <p class="time-desc fr">Développement d'un tableau de bord de pilotage de l'activité monétique avec visualisations interactives.</p>
+                    <p class="time-desc en">Developed an e-banking management dashboard with interactive visualizations for operational tracking.</p>
                 </div>
                 <div class="timeline-card">
                     <span class="time-date">06/2025 – 07/2025</span>
                     <span class="time-title">Sagemcom — Stagiaire Business Intelligence</span>
-                    <p class="time-desc fr">Développement de rapports Power BI réutilisables avec nettoyage de données via Power Query pour automatiser le reporting métier.</p>
-                    <p class="time-desc en">Created reusable Power BI dashboards with data cleaning via Power Query to automate business reporting and improve data visualization.</p>
+                    <p class="time-desc fr">Automatisation du reporting métier via Power BI et nettoyage de données complexes sous Power Query.</p>
+                    <p class="time-desc en">Automated business reporting using Power BI and complex data cleaning with Power Query.</p>
                 </div>
             </div>
         </div>
@@ -265,7 +292,7 @@
                     <span class="time-date">08/2022 – 08/2024</span>
                     <span class="time-title">IPEI Tunis</span>
                     <p class="time-desc fr">Diplôme Préparatoire aux Études d'Ingénieurs</p>
-                    <p class="time-desc en">Preparatory Studies for Engineering Schools</p>
+                    <p class="time-desc en">Preparatory Engineering Studies</p>
                 </div>
             </div>
         </div>
@@ -278,8 +305,8 @@
             <div class="project-grid">
                 <div class="p-card">
                     <h3>QoS Buddy</h3>
-                    <p class="fr">Agent IA pour la surveillance télécom en temps réel, diagnostic des causes de dégradation et recommandations correctives.</p>
-                    <p class="en">Real-time telecom monitoring AI agent to detect QoS degradations, diagnose causes, and recommend corrective actions.</p>
+                    <p class="fr">Agent IA pour la surveillance télécom en temps réel, diagnostic des causes de dégradation et recommandations.</p>
+                    <p class="en">Real-time telecom monitoring AI agent to detect QoS degradations and suggest corrective actions.</p>
                     <div class="tags">
                         <span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">ML</span>
                     </div>
@@ -295,7 +322,7 @@
                 <div class="p-card">
                     <h3>Cancer Detection</h3>
                     <p class="fr">Pipeline de classification pour la détection du cancer du sein avec comparaison de performance de plusieurs modèles ML.</p>
-                    <p class="en">Machine learning classification pipeline for breast cancer detection and model benchmarking based on accuracy and recall.</p>
+                    <p class="en">Machine learning classification pipeline for breast cancer detection and model benchmarking.</p>
                     <div class="tags">
                         <span class="tag">Scikit-learn</span><span class="tag">Healthcare</span><span class="tag">Classification</span>
                     </div>
