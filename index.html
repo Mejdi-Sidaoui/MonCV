@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mejdi Sidaoui | Junior Data Scientist</title>
-    <!-- FontAwesome pour les icônes -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* --- VARIABLES ET THÈME --- */
         :root {
             --primary: #0f172a;    
             --accent: #2563eb;     
@@ -15,29 +13,26 @@
             --text-dark: #1e293b;
             --text-muted: #64748b;
             --white: #ffffff;
-            --container-padding: 5%;
+            --container-padding: 10%;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; }
-
         html { scroll-behavior: smooth; }
+        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
 
-        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
-
-        section { padding: 80px var(--container-padding); }
-
+        section { padding: 100px var(--container-padding); }
         .container { max-width: 1100px; margin: 0 auto; }
 
         h2 { 
-            font-size: clamp(1.5rem, 5vw, 2rem); 
-            margin-bottom: 2rem; 
+            font-size: 2rem; 
+            margin-bottom: 3rem; 
             border-left: 5px solid var(--accent); 
             padding-left: 15px; 
             text-transform: uppercase; 
             letter-spacing: 1px; 
         }
 
-        /* --- LOGIQUE DE LANGUE (CSS ONLY) --- */
+        /* LANGUAGE TOGGLE LOGIC */
         #lang-toggle { display: none; }
         .en { display: none; }
         #lang-toggle:checked ~ * .fr { display: none; }
@@ -45,160 +40,114 @@
         #lang-toggle:checked ~ nav .nav-links .en { display: inline-block; }
         #lang-toggle:not(:checked) ~ nav .nav-links .fr { display: inline-block; }
 
-        /* --- NAVIGATION --- */
+        /* NAVIGATION */
         nav {
             position: fixed; width: 100%; background: rgba(255, 255, 255, 0.95);
-            padding: 0.8rem var(--container-padding); 
+            padding: 1rem var(--container-padding); 
             display: flex; justify-content: space-between;
             align-items: center; box-shadow: 0 1px 10px rgba(0,0,0,0.05); z-index: 1000;
             backdrop-filter: blur(10px);
         }
-        .nav-links { display: flex; gap: 15px; align-items: center; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-        .nav-links a { 
-            text-decoration: none; color: var(--text-dark); font-weight: 600; 
-            font-size: 0.85rem; transition: 0.3s; white-space: nowrap; 
-        }
+        .nav-links { display: flex; gap: 20px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
         .nav-links a:hover { color: var(--accent); }
         .lang-btn { 
-            background: var(--primary); color: white; padding: 6px 12px; 
-            border-radius: 20px; cursor: pointer; font-size: 0.75rem; 
-            font-weight: bold; flex-shrink: 0; margin-left: 10px;
+            background: var(--primary); color: white; padding: 6px 15px; 
+            border-radius: 20px; cursor: pointer; font-size: 0.8rem; font-weight: bold; 
         }
 
-        /* --- HERO --- */
+        /* HERO SECTION */
         #home { 
-            min-height: 90vh; display: flex; align-items: center; 
+            min-height: 100vh; display: flex; align-items: center; 
             background: radial-gradient(circle at top right, #1e293b, #0f172a); 
-            color: white; padding-top: 100px;
+            color: white; padding-top: 80px;
         }
-        .hero-flex { 
-            display: flex; justify-content: space-between; 
-            align-items: center; width: 100%; gap: 30px; 
-        }
-        .hero-text h1 { font-size: clamp(2.5rem, 8vw, 4rem); line-height: 1.1; margin-bottom: 15px; }
-        .hero-text .subtitle { font-size: clamp(1.1rem, 4vw, 1.5rem); color: var(--accent); font-weight: 300; }
-        
+        .hero-flex { display: flex; justify-content: space-between; align-items: center; width: 100%; gap: 50px; }
+        .hero-text h1 { font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1.1; margin-bottom: 20px; }
+        .hero-text .subtitle { font-size: 1.5rem; color: var(--accent); font-weight: 400; margin-bottom: 30px; }
         .profile-circle {
-            flex-shrink: 0;
-            width: clamp(200px, 30vw, 320px);
-            height: clamp(200px, 30vw, 320px);
-            border-radius: 50%; border: 8px solid rgba(255,255,255,0.1);
-            overflow: hidden; background: #334155;
+            width: 350px; height: 350px; border-radius: 50%; border: 10px solid rgba(255,255,255,0.05);
+            overflow: hidden; flex-shrink: 0; box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
         .profile-circle img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* --- SKILLS --- */
-        .skills-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .skill-group { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        .skill-item { margin-bottom: 15px; }
-        .skill-label { display: flex; justify-content: space-between; margin-bottom: 5px; font-weight: 600; font-size: 0.9rem; }
-        .bar-bg { height: 8px; background: #e2e8f0; border-radius: 10px; }
-        .bar-fill { height: 100%; background: var(--accent); border-radius: 10px; }
+        /* SKILLS GRID */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .skill-card { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .skill-card h3 { margin-bottom: 15px; color: var(--accent); font-size: 1.1rem; display: flex; align-items: center; gap: 10px; }
+        .tag-container { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tag { background: #f1f5f9; color: #475569; padding: 5px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: 500; border: 1px solid #e2e8f0; }
 
-        /* --- TIMELINE --- */
-        .timeline { border-left: 2px solid #e2e8f0; padding-left: 20px; margin-left: 10px; }
-        .timeline-card { position: relative; margin-bottom: 30px; }
-        .timeline-card::before { 
-            content: ""; position: absolute; left: -29px; top: 5px; 
-            width: 14px; height: 14px; border-radius: 50%; 
-            background: var(--accent); border: 3px solid var(--bg-light); 
+        /* EXPERIENCE TIMELINE */
+        .timeline { border-left: 3px solid #e2e8f0; padding-left: 30px; margin-left: 10px; }
+        .timeline-item { position: relative; margin-bottom: 50px; }
+        .timeline-item::before { 
+            content: ""; position: absolute; left: -39px; top: 5px; 
+            width: 16px; height: 16px; border-radius: 50%; 
+            background: var(--accent); border: 4px solid var(--bg-light); 
         }
-        .time-date { font-weight: bold; color: var(--accent); font-size: 0.9rem; }
-        .time-title { font-weight: 700; font-size: 1.1rem; display: block; margin: 5px 0; }
-        .time-desc { font-size: 0.95rem; color: var(--text-muted); }
+        .time-date { font-weight: 800; color: var(--accent); font-size: 0.9rem; background: #dbeafe; padding: 4px 12px; border-radius: 20px; }
+        .time-company { font-weight: 700; font-size: 1.3rem; display: block; margin: 10px 0 5px 0; }
+        .time-role { font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 15px; font-style: italic; }
+        .timeline-content ul { list-style-type: none; }
+        .timeline-content li { margin-bottom: 8px; position: relative; padding-left: 20px; font-size: 0.95rem; }
+        .timeline-content li::before { content: "▹"; position: absolute; left: 0; color: var(--accent); }
 
-        /* --- PROJECTS --- */
-        .project-grid { 
-            display: grid; 
-            grid-template-columns: repeat(3, 1fr); 
-            gap: 25px; 
-            margin-top: 20px;
-        }
+        /* PROJECTS */
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .p-card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border-top: 5px solid var(--accent); transition: 0.3s; }
+        .p-card:hover { transform: translateY(-10px); }
+        .p-card h3 { margin-bottom: 15px; font-size: 1.25rem; }
+        .p-card p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 20px; }
 
-        .p-card {
-            background: var(--white);
-            padding: 30px; 
-            border-radius: 15px; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-            border-top: 6px solid var(--accent);
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            transition: transform 0.3s ease;
-        }
-
-        .p-card:hover { transform: translateY(-5px); }
-        .p-card h3 { font-size: 1.2rem; color: var(--primary); margin-bottom: 15px; font-weight: 700; }
-        .p-card p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 25px; flex-grow: 1; }
-        .tags { display: flex; flex-wrap: wrap; gap: 8px; }
-        .tag { background: #eff6ff; color: var(--accent); padding: 5px 12px; border-radius: 8px; font-size: 0.75rem; font-weight: 700; }
-
-        /* --- CONTACT --- */
+        /* CONTACT */
         #contact { background: var(--primary); color: white; }
-        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
-        .contact-info a { color: white; text-decoration: none; display: flex; align-items: center; gap: 15px; margin-bottom: 20px; font-size: 1rem; }
-        .contact-info i { color: var(--accent); width: 25px; font-size: 1.2rem; }
-        
+        .contact-flex { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+        .contact-info a { color: white; text-decoration: none; display: flex; align-items: center; gap: 15px; margin-bottom: 20px; font-size: 1.1rem; transition: 0.3s; }
+        .contact-info a:hover { color: var(--accent); }
         form { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 15px; display: flex; flex-direction: column; gap: 15px; }
-        input, textarea { 
-            padding: 12px; 
-            border-radius: 8px; 
-            border: 1px solid rgba(255,255,255,0.1); 
-            width: 100%; 
-            background: rgba(255,255,255,0.9); 
-            color: #1e293b; 
-            font-size: 1rem;
-        }
-        form button { 
-            background: var(--accent); 
-            color: white; 
-            padding: 12px; 
-            border: none; 
-            border-radius: 8px; 
-            font-weight: bold; 
-            cursor: pointer; 
-            transition: 0.3s; 
-            font-size: 1rem;
-        }
-        form button:hover { background: #1d4ed8; transform: translateY(-2px); }
+        input, textarea { padding: 15px; border-radius: 8px; border: none; background: white; width: 100%; }
+        form button { background: var(--accent); color: white; padding: 15px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        form button:hover { background: #1d4ed8; }
 
         @media (max-width: 768px) {
-            nav { justify-content: center; flex-direction: column; gap: 10px; }
-            .nav-links { width: 100%; justify-content: flex-start; padding-bottom: 5px; }
-            .hero-flex { flex-direction: column-reverse; text-align: center; margin-top: 20px; }
-            .project-grid { grid-template-columns: 1fr; }
-            .contact-grid { grid-template-columns: 1fr; }
+            .hero-flex { flex-direction: column-reverse; text-align: center; }
+            .contact-flex { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .profile-circle { width: 250px; height: 250px; }
         }
 
-        footer { background: #0b1120; color: #64748b; text-align: center; padding: 40px var(--container-padding); font-size: 0.8rem; }
+        footer { background: #0b1120; color: #64748b; text-align: center; padding: 40px; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
     <input type="checkbox" id="lang-toggle">
 
-    <!-- NAVIGATION -->
     <nav>
         <div class="nav-links">
             <a href="#home" class="fr">Accueil</a><a href="#home" class="en">Home</a>
             <a href="#profile" class="fr">Profil</a><a href="#profile" class="en">Profile</a>
-            <a href="#about" class="fr">Compétences</a><a href="#about" class="en">Skills</a>
+            <a href="#skills" class="fr">Compétences</a><a href="#skills" class="en">Skills</a>
             <a href="#experience" class="fr">Expérience</a><a href="#experience" class="en">Experience</a>
-            <a href="#education" class="fr">Formation</a><a href="#education" class="en">Education</a>
             <a href="#projects" class="fr">Projets</a><a href="#projects" class="en">Projects</a>
             <a href="#contact">Contact</a>
         </div>
         <label for="lang-toggle" class="lang-btn">
-            <span class="fr">EN</span><span class="en">FR</span>
+            <span class="fr">English</span><span class="en">Français</span>
         </label>
     </nav>
 
-    <!-- ACCUEIL (HERO) -->
+    <!-- HERO -->
     <section id="home">
         <div class="container hero-flex">
             <div class="hero-text">
                 <h1>Mejdi Sidaoui</h1>
-                <p class="subtitle">Junior Data Scientist</p>
+                <p class="subtitle fr">Data Scientist Junior</p>
+                <p class="subtitle en">Junior Data Scientist</p>
+                <div class="contact-info" style="margin-top: 20px;">
+                    <a href="https://linkedin.com/in/mejdi-sidaoui-77111b326" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                </div>
             </div>
             <div class="profile-circle">
                 <img src="MejdiSidaoui.png" alt="Mejdi Sidaoui">
@@ -206,125 +155,166 @@
         </div>
     </section>
 
-    <!-- SECTION PROFIL -->
+    <!-- PROFIL -->
     <section id="profile" style="background: white;">
         <div class="container">
-            <h2 class="fr">À Propos de Moi</h2><h2 class="en">About Me</h2>
-            <div class="profile-text">
-                <p class="fr">
-                    Étudiant en informatique spécialisé en Data Science, avec une expérience pratique en Python, Machine Learning, Deep Learning et Visualisation de données (Power BI). Compétent dans la conception de solutions orientées données, de la préparation des données à la modélisation prédictive.
-                </p>
-                <p class="en">
-                    Computer science student specializing in Data Science, with hands-on experience in Python, Machine Learning, Deep Learning, and Data Visualization (Power BI). Skilled in designing data-driven solutions, from data preparation to predictive modeling.
-                </p>
-            </div>
+            <h2 class="fr">À Propos</h2><h2 class="en">About Me</h2>
+            <p class="fr" style="font-size: 1.2rem; color: var(--text-muted); max-width: 800px;">
+                Étudiant en informatique, spécialisé en Data Science, avec une expérience pratique en Python, SQL, Machine Learning et Power BI. Compétent en analyse et préparation des données, en modélisation prédictive, ainsi qu’en développement de solutions basées sur les données et de tableaux de bord interactifs.
+            </p>
+            <p class="en" style="font-size: 1.2rem; color: var(--text-muted); max-width: 800px;">
+                Computer science student specializing in Data Science, with hands-on experience in Python, SQL, Machine Learning, and Power BI. Skilled in data analysis, predictive modeling, and developing data-driven solutions and interactive dashboards.
+            </p>
         </div>
     </section>
 
     <!-- SKILLS -->
-    <section id="about">
+    <section id="skills">
         <div class="container">
             <h2 class="fr">Compétences</h2><h2 class="en">Skills</h2>
-            <div class="skills-container">
-                <div class="skill-group">
-                    <div class="skill-item">
-                        <div class="skill-label"><span>Python / R / ML</span><span>90%</span></div>
-                        <div class="bar-bg"><div class="bar-fill" style="width: 90%;"></div></div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-label"><span>Deep Learning (TF/PyTorch)</span><span>85%</span></div>
-                        <div class="bar-bg"><div class="bar-fill" style="width: 85%;"></div></div>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3><i class="fas fa-code"></i> <span class="fr">Cœur de métier</span><span class="en">Core Tech</span></h3>
+                    <div class="tag-container">
+                        <span class="tag">Python</span><span class="tag">R</span><span class="tag">Java</span>
+                        <span class="tag">Machine Learning</span><span class="tag">Deep Learning</span>
+                        <span class="tag">Data Analysis</span><span class="tag">Feature Engineering</span>
                     </div>
                 </div>
-                <div class="skill-group">
-                    <div class="skill-item">
-                        <div class="skill-label"><span>Power BI / Data Viz</span><span>95%</span></div>
-                        <div class="bar-bg"><div class="bar-fill" style="width: 95%;"></div></div>
+                <div class="skill-card">
+                    <h3><i class="fas fa-tools"></i> <span class="fr">Outils & Frameworks</span><span class="en">Tools & Frameworks</span></h3>
+                    <div class="tag-container">
+                        <span class="tag">Scikit-learn</span><span class="tag">TensorFlow</span><span class="tag">PyTorch</span>
+                        <span class="tag">XGBoost</span><span class="tag">Pandas</span><span class="tag">Power BI</span>
+                        <span class="tag">Docker</span><span class="tag">Git</span>
                     </div>
-                    <div class="skill-item">
-                        <div class="skill-label"><span>SQL / NoSQL (Mongo, Neo4j)</span><span>80%</span></div>
-                        <div class="bar-bg"><div class="bar-fill" style="width: 80%;"></div></div>
+                </div>
+                <div class="skill-card">
+                    <h3><i class="fas fa-database"></i> <span class="fr">Bases de données</span><span class="en">Databases</span></h3>
+                    <div class="tag-container">
+                        <span class="tag">MySQL</span><span class="tag">PostgreSQL</span><span class="tag">SQL Server</span>
+                        <span class="tag">MongoDB</span><span class="tag">Neo4j</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-   <!-- EXPÉRIENCE -->
+    <!-- EXPERIENCE -->
     <section id="experience" style="background: #f1f5f9;">
         <div class="container">
-            <h2 class="fr">Expériences</h2><h2 class="en">Experience</h2>
+            <h2 class="fr">Expériences Professionnelles</h2><h2 class="en">Professional Experience</h2>
             <div class="timeline">
-                <div class="timeline-card">
-                    <span class="time-date">06/2026 – Présent</span>
-                    <span class="time-title">Arab Tunisian Bank — Stagiaire Développeur Power BI</span>
-                    <p class="time-desc fr">Conception d'un dashboard de suivi de portefeuille financier avec modèle en étoile et KPIs DAX pour l'aide à la décision.</p>
-                    <p class="time-desc en">Designed a financial portfolio dashboard using star schema and DAX KPIs for investment decision-making.</p>
+                
+                <!-- ATB -->
+                <div class="timeline-item">
+                    <span class="time-date">06/2026 – 08/2026</span>
+                    <span class="time-company">Arab Tunisian Bank</span>
+                    <span class="time-role fr">Stagiaire Data & Business Intelligence</span>
+                    <span class="time-role en">Data & Business Intelligence Intern</span>
+                    <div class="timeline-content">
+                        <ul class="fr">
+                            <li>Conception d'un tableau de bord Power BI de suivi de portefeuille financier.</li>
+                            <li>Utilisation d'un modèle en étoile et implémentation de KPIs DAX.</li>
+                            <li>Mise en place d'alertes de risque dynamiques pour l'aide à la décision.</li>
+                        </ul>
+                        <ul class="en">
+                            <li>Designed a Power BI financial portfolio tracking dashboard.</li>
+                            <li>Implemented star schema and advanced DAX KPIs.</li>
+                            <li>Set up dynamic risk alerts for investment decision-making.</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="timeline-card">
+
+                <!-- QNB -->
+                <div class="timeline-item">
                     <span class="time-date">08/2025 – 09/2025</span>
-                    <span class="time-title">Qatar National Bank — Stagiaire BI & Reporting</span>
-                    <p class="time-desc fr">Développement d'un tableau de bord de pilotage de l'activité monétique avec visualisations interactives.</p>
-                    <p class="time-desc en">Developed an e-banking management dashboard with interactive visualizations for operational tracking.</p>
+                    <span class="time-company">Qatar National Bank (QNB)</span>
+                    <span class="time-role fr">Stagiaire Data Analytics & Business Intelligence</span>
+                    <span class="time-role en">Data Analytics & Business Intelligence Intern</span>
+                    <div class="timeline-content">
+                        <ul class="fr">
+                            <li>Solution de suivi des transactions monétiques : Scoring des risques et analyse de concentration (SQL Server, Python, Streamlit).</li>
+                            <li>Automatisation KYC : Développement d'une solution avec FastAPI pour identifier les incohérences et anomalies dans les données clients.</li>
+                        </ul>
+                        <ul class="en">
+                            <li>E-banking transaction solution: Risk scoring and concentration analysis (SQL Server, Python, Streamlit).</li>
+                            <li>KYC Automation: Developed a FastAPI solution to identify inconsistencies and anomalies in client data.</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="timeline-card">
+
+                <!-- SAGEMCOM -->
+                <div class="timeline-item">
                     <span class="time-date">06/2025 – 07/2025</span>
-                    <span class="time-title">Sagemcom — Stagiaire Business Intelligence</span>
-                    <p class="time-desc fr">Automatisation du reporting métier via Power BI et nettoyage de données complexes sous Power Query.</p>
-                    <p class="time-desc en">Automated business reporting using Power BI and complex data cleaning with Power Query.</p>
+                    <span class="time-company">Sagemcom</span>
+                    <span class="time-role fr">Stagiaire Business Intelligence</span>
+                    <span class="time-role en">Business Intelligence Intern</span>
+                    <div class="timeline-content">
+                        <ul class="fr">
+                            <li>Développement de tableaux de bord Power BI réutilisables.</li>
+                            <li>Nettoyage et structuration de données complexes via Power Query.</li>
+                            <li>Automatisation du reporting métier pour améliorer la visualisation.</li>
+                        </ul>
+                        <ul class="en">
+                            <li>Developed reusable Power BI dashboards.</li>
+                            <li>Cleaned and structured complex data via Power Query.</li>
+                            <li>Automated business reporting to improve data visualization.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FORMATION -->
+    <!-- EDUCATION -->
     <section id="education">
         <div class="container">
             <h2 class="fr">Formation</h2><h2 class="en">Education</h2>
             <div class="timeline">
-                <div class="timeline-card">
-                    <span class="time-date">08/2024 – Présent</span>
-                    <span class="time-title">ESPRIT, Tunis</span>
-                    <p class="time-desc fr">Diplôme d'Ingénieur en Informatique</p>
-                    <p class="time-desc en">Engineering Degree in Computer Science</p>
+                <div class="timeline-item">
+                    <span class="time-date">2024 – Présent</span>
+                    <span class="time-company">ESPRIT, Tunis</span>
+                    <span class="time-role fr">Diplôme d'Ingénieur en Informatique</span>
+                    <span class="time-role en">Engineering Degree in Computer Science</span>
                 </div>
-                <div class="timeline-card">
-                    <span class="time-date">08/2022 – 08/2024</span>
-                    <span class="time-title">IPEIT, Tunis</span>
-                    <p class="time-desc fr">Diplôme Préparatoire aux Études d'Ingénieurs</p>
-                    <p class="time-desc en">Preparatory Engineering Studies</p>
+                <div class="timeline-item">
+                    <span class="time-date">2022 – 2024</span>
+                    <span class="time-company">IPEIT, Tunis</span>
+                    <span class="time-role fr">Cycle Préparatoire aux Études d'Ingénieurs</span>
+                    <span class="time-role en">Preparatory Engineering Studies</span>
                 </div>
             </div>
         </div>
     </section>
 
-   <!-- PROJETS -->
-    <section id="projects">
+    <!-- PROJECTS -->
+    <section id="projects" style="background: white;">
         <div class="container">
-            <h2 class="fr">Projets</h2><h2 class="en">Projects</h2>
+            <h2 class="fr">Projets Phares</h2><h2 class="en">Key Projects</h2>
             <div class="project-grid">
                 <div class="p-card">
                     <h3>QoS Buddy</h3>
                     <p class="fr">Agent IA pour la surveillance télécom en temps réel, diagnostic des causes de dégradation et recommandations.</p>
                     <p class="en">Real-time telecom monitoring AI agent to detect QoS degradations and suggest corrective actions.</p>
-                    <div class="tags">
+                    <div class="tag-container">
                         <span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">ML</span>
                     </div>
                 </div>
                 <div class="p-card">
                     <h3>Delivery Prediction</h3>
-                    <p class="fr">Pipeline de régression end-to-end pour prédire avec précision les délais de livraison (Logistique du dernier kilomètre).</p>
-                    <p class="en">End-to-end regression pipeline integrating data cleaning and PCA to accurately predict delivery times.</p>
-                    <div class="tags">
-                        <span class="tag">Scikit-learn</span><span class="tag">PCA</span><span class="tag">Pandas</span>
+                    <p class="fr">Pipeline de régression end-to-end (nettoyage, Feature Engineering, ACP) pour prédire les délais de livraison.</p>
+                    <p class="en">End-to-end regression pipeline (cleaning, feature engineering, PCA) to predict delivery delays.</p>
+                    <div class="tag-container">
+                        <span class="tag">Scikit-learn</span><span class="tag">Pandas</span><span class="tag">PCA</span>
                     </div>
                 </div>
                 <div class="p-card">
                     <h3>Cancer Detection</h3>
-                    <p class="fr">Pipeline de classification pour la détection du cancer du sein avec comparaison de performance de plusieurs modèles ML.</p>
-                    <p class="en">Machine learning classification pipeline for breast cancer detection and model benchmarking.</p>
-                    <div class="tags">
-                        <span class="tag">Scikit-learn</span><span class="tag">Healthcare</span><span class="tag">Classification</span>
+                    <p class="fr">Pipeline de classification pour détecter le cancer du sein et comparer plusieurs modèles ML (Précision/Sensibilité).</p>
+                    <p class="en">Classification pipeline for breast cancer detection and benchmarking multiple ML models.</p>
+                    <div class="tag-container">
+                        <span class="tag">Python</span><span class="tag">Classification</span><span class="tag">Evaluation</span>
                     </div>
                 </div>
             </div>
@@ -333,27 +323,29 @@
 
     <!-- CONTACT -->
     <section id="contact">
-        <div class="container contact-grid">
+        <div class="container contact-flex">
             <div class="contact-info">
                 <h2 style="color: white; border:none; padding:0;">Contact</h2>
+                <p class="fr">N'hésitez pas à me contacter pour toute opportunité ou collaboration.</p>
+                <p class="en">Feel free to reach out for opportunities or collaborations.</p>
+                <br>
                 <a href="mailto:mejdisidaoui50@gmail.com"><i class="fas fa-envelope"></i> mejdisidaoui50@gmail.com</a>
                 <a href="tel:+21655239555"><i class="fas fa-phone"></i> (+216) 55 239 555</a>
-                <a href="https://linkedin.com/in/mejdi-sidaoui-77111b326" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
                 <a href="https://github.com/Mejdi-Sidaoui" target="_blank"><i class="fab fa-github"></i> GitHub</a>
             </div>
             <form action="https://formspree.io/f/xdayglkp" method="POST">
                 <input type="text" name="name" placeholder="Nom / Name" required>
                 <input type="email" name="email" placeholder="Email" required>
-                <textarea name="message" rows="4" placeholder="Message" required></textarea>
+                <textarea name="message" rows="5" placeholder="Message" required></textarea>
                 <button type="submit">
-                    <span class="fr">Envoyer</span><span class="en">Send</span>
+                    <span class="fr">Envoyer le message</span><span class="en">Send Message</span>
                 </button>
             </form>
         </div>
     </section>
 
     <footer>
-        Mejdi Sidaoui © 2026 — Junior Data Scientist
+        Mejdi Sidaoui &copy; 2026 | Junior Data Scientist | Tunis, Tunisie
     </footer>
 
 </body>
